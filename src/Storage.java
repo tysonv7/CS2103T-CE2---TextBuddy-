@@ -76,7 +76,9 @@ public class Storage {
 	public void delete(String variables) throws IOException {
 		int lineNumberToBeRemoved = Integer.parseInt(variables.substring(1))-1;
 		lineCounter = 1;
+		String messageToBeDeleted = textBuffer.get(lineNumberToBeRemoved).substring(3);
 		textBuffer.remove(lineNumberToBeRemoved);
+		@SuppressWarnings("unchecked")
 		ArrayList<String> temp = (ArrayList<String>) textBuffer.clone();
 		textBuffer = new ArrayList<String>();
 		for(int i = 0; i < temp.size(); i++){
@@ -86,8 +88,10 @@ public class Storage {
 		//textBufferChecker();
 		fileInitialiser(filename);
 		writeBufferToFile();
+		System.out.println(String.format(DONE_DELETE_COMMAND, filename, messageToBeDeleted));
 	}
 
+	@SuppressWarnings("unused")
 	private void textBufferChecker() {
 		for (int i = 0; i < textBuffer.size(); i++){
 			System.out.println(textBuffer.get(i));
@@ -95,7 +99,8 @@ public class Storage {
 		
 	}
 
-	private void writeBufferToFile() {
+	private static void writeBufferToFile() throws FileNotFoundException {
+		fileWriter = new PrintWriter(filename);
 		for (int i = 0; i < textBuffer.size(); i++){
 			fileWriter.println(textBuffer.get(i));
 			fileWriter.flush();

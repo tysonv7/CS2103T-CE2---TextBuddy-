@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class TextBuddyPlusPlus {
@@ -14,7 +15,12 @@ public class TextBuddyPlusPlus {
 	private static void inputForwarding(Logic logicComponent) throws IOException {
 		while(true){
 			String input = inputScanner.next();
-			String variables = inputScanner.nextLine();
+			String variables = null;
+			try{
+				variables = inputScanner.nextLine();
+			}catch(NoSuchElementException e){
+				
+			}
 			ArrayList<String> inputReturns = logicComponent.command(input,variables);
 			if(inputReturns != null){
 				textPrinter(inputReturns);

@@ -32,7 +32,7 @@ public class Logic {
 		
 	}
 
-	private void systemExiter() throws IOException {
+	private static void systemExiter() throws IOException {
 		storageComponent.exit();
 	}
 
