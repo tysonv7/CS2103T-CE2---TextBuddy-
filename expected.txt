@@ -1,24 +1,24 @@
 Welcome to TextBuddy. mytextfile.txt is ready for use
-added to mytextfile.txt: "Sherry "
-added to mytextfile.txt: "is"
-added to mytextfile.txt: "cute"
-added to mytextfile.txt: "and"
-added to mytextfile.txt: "tsun"
+added to finalSherryTest.txt: "Sherry "
+added to finalSherryTest.txt: "is"
+added to finalSherryTest.txt: "cute"
+added to finalSherryTest.txt: "and"
+added to finalSherryTest.txt: "tsun"
 1. Sherry 
 2. is
 3. cute
 4. and
 5. tsun
-deleted from mytextfile.txt: "and"
-deleted from mytextfile.txt: "tsun"
+deleted from finalSherryTest.txt: "and"
+deleted from finalSherryTest.txt: "tsun"
 1. Sherry 
 2. is
 3. cute
-all content deleted from mytextfile.txt
-mytextfile.txt is empty
-added to mytextfile.txt: "Sherry"
-added to mytextfile.txt: "uses"
-added to mytextfile.txt: "moe moe attack"
+all content deleted from finalSherryTest.txt
+finalSherryTest.txt is empty
+added to finalSherryTest.txt: "Sherry"
+added to finalSherryTest.txt: "uses"
+added to finalSherryTest.txt: "moe moe attack"
 1. Sherry
 2. uses
 3. moe moe attack
