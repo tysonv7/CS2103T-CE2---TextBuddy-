@@ -21,16 +21,17 @@ public class TextBuddyPlusPlus {
 			}catch(NoSuchElementException e){
 				
 			}
-			ArrayList<String> inputReturns = logicComponent.command(input,variables);
-			if(inputReturns != null){
-				textPrinter(inputReturns);
-			}
+			logicComponent.parseCommand(input,variables);
 		}
 	}
-	private static void textPrinter(ArrayList<String> inputReturns) {
+	public static void arrayListPrinter(ArrayList<String> inputReturns) {
 		for (int i = 0; i < inputReturns.size();i++){
-			System.out.println(inputReturns.get(i));
+			textPrinter(inputReturns.get(i));
 		}
+	}
+	
+	public static void textPrinter(String output){
+		System.out.println(output);
 	}
 	private static void printWelcomeMessage(String[] args) {
 		System.out.println(String.format(MESSAGE_WELCOME, args[0]));

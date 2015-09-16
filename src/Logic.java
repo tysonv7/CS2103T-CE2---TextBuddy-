@@ -16,20 +16,18 @@ public class Logic {
 		storageComponent = new Storage(filename);
 	}
 
-	public ArrayList<String> command(String input,String variables) throws IOException {
+	public void parseCommand(String input,String variables) throws IOException {
 		if (input.equals(COMMAND_ADD)){
 			fileAdder(variables);
 		}else if (input.equals(COMMAND_CLEAR)){
 			fileClearer();
 		}else if (input.equals(COMMAND_DISPLAY)){
-			return fileDisplayer();
+			fileDisplayer();
 		}else if (input.equals(COMMAND_EXIT)){
 			systemExiter();
 		}else if (input.equals(COMMAND_DELETE)){
 			fileDeleter(variables);
 		}
-		return null;
-		
 	}
 
 	private static void systemExiter() throws IOException {
@@ -40,9 +38,8 @@ public class Logic {
 		storageComponent.delete(variables);
 	}
 
-	private ArrayList<String> fileDisplayer() throws FileNotFoundException {
-		ArrayList<String> messagesToBeDisplayed = storageComponent.display();
-		return messagesToBeDisplayed;
+	private void fileDisplayer() throws FileNotFoundException {
+		storageComponent.display();
 	}
 
 	private void fileClearer() throws IOException {
@@ -53,6 +50,12 @@ public class Logic {
 		storageComponent.add(variables);
 	}
 	
-
+	public static void getMessage(String message){
+		TextBuddyPlusPlus.textPrinter(message);
+	}
+	
+	public static void getDisplayData(ArrayList<String> message){
+		TextBuddyPlusPlus.arrayListPrinter(message);
+	}
 
 }

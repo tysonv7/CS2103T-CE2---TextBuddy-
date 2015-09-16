@@ -18,8 +18,8 @@ public class Storage {
 	static BufferedWriter fileWriterBuffer;
 	static FileReader fileReader;
 	static BufferedReader textReader;
-	static int lineCounter = 1;
 	static ArrayList<String> textBuffer = new ArrayList<String>();
+	static int lineCounter = 1;
 	
 	public Storage(String file) throws IOException {
 		filename = file;
@@ -32,6 +32,7 @@ public class Storage {
 		String line;
 		while ((line = textReader.readLine()) != null) {
 			textBuffer.add(line);
+			lineCounter++;
 		}
 	}
 
@@ -48,7 +49,7 @@ public class Storage {
 		fileWriter.flush();
 		lineCounter++;
 		/**to remove the empty space before the textInput */
-		System.out.println(String.format(DONE_ADD_COMMAND, filename,textInput.substring(1))); 
+		Logic.getMessage(String.format(DONE_ADD_COMMAND, filename,textInput.substring(1))); 
 		
 	}
 	
@@ -56,15 +57,14 @@ public class Storage {
 		fileInitialiser(filename);
 		lineCounter = 1;
 		textBuffer.clear();
-		System.out.println(DONE_CLEAR_COMMAND + filename);
+		Logic.getMessage(DONE_CLEAR_COMMAND + filename);
 	}
 
-	public ArrayList<String> display() throws FileNotFoundException {
+	public void display() throws FileNotFoundException {
 		if (textBuffer.size() == 0){
-			System.out.println(filename + DONE_EMPTY_COMMAND);
-			return null;
+			Logic.getMessage(filename + DONE_EMPTY_COMMAND);
 		}else{
-			return textBuffer;
+			Logic.getDisplayData(textBuffer);
 		}
 	}
 
@@ -88,7 +88,7 @@ public class Storage {
 		//textBufferChecker();
 		fileInitialiser(filename);
 		writeBufferToFile();
-		System.out.println(String.format(DONE_DELETE_COMMAND, filename, messageToBeDeleted));
+		Logic.getMessage(String.format(DONE_DELETE_COMMAND, filename, messageToBeDeleted));
 	}
 
 	@SuppressWarnings("unused")
