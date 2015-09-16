@@ -10,8 +10,6 @@ public class Logic {
 	private final static String COMMAND_EXIT = "exit";
 	private static Storage storageComponent;
 
-
-
 	public Logic(String filename) throws IOException {
 		storageComponent = new Storage(filename);
 	}

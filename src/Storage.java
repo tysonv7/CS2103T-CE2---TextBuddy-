@@ -34,6 +34,7 @@ public class Storage {
 			textBuffer.add(line);
 			lineCounter++;
 		}
+	
 	}
 
 	private static void fileInitialiser(String filename) throws IOException {

@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class TextBuddyPlusPlusTest {
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private final String LINESEPARATOR = System.getProperty("line.separator");
 	
 	@Before
 	public void setUpStreams(){
@@ -27,20 +28,18 @@ public class TextBuddyPlusPlusTest {
 
 	@Test
 	public void testArrayPrinter() {
-//		ArrayList<String> test = new ArrayList<String>();
-//		test.add("This");
-//		test.add("is");
-//		test.add("stupid");
-//		TextBuddyPlusPlus.arrayListPrinter(test);
-//		assertEquals("This\n"+"is\n"+"stupid"+ System.getProperty("line.separator"),outContent.toString());
+		ArrayList<String> test = new ArrayList<String>();
+		test.add("This");
+		test.add("is");
+		test.add("stupid");
+		TextBuddyPlusPlus.arrayListPrinter(test);
+		assertEquals("This" + LINESEPARATOR + "is" + LINESEPARATOR + "stupid" + LINESEPARATOR, outContent.toString());
 	}
 
 	@Test
 	public void testTextPrinter() {
 		TextBuddyPlusPlus.textPrinter("hello");
-		System.out.println("hello");
-		System.out.println(outContent.toString());
-		assertEquals("hello"+ System.getProperty("line.separator") ,outContent.toString());
+		assertEquals("hello" + LINESEPARATOR, outContent.toString());
 	}
 
 }
