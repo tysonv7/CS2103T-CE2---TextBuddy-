@@ -9,6 +9,7 @@ public class Logic {
 	private final static String COMMAND_CLEAR = "clear";
 	private final static String COMMAND_EXIT = "exit";
 	private final static String COMMAND_INVALID = "Invalid command! Please try again!";
+	private static final Object COMMAND_SORT = "sort";
 	private static Storage storageComponent;
 
 	public Logic(String filename) throws IOException {
@@ -26,9 +27,16 @@ public class Logic {
 			systemExiter();
 		}else if (input.equals(COMMAND_DELETE)){
 			fileDeleter(variables);
+		}else if (input.equals(COMMAND_SORT)){
+			fileSorter();
 		}else{
 			getMessage(COMMAND_INVALID);
 		}
+	}
+
+	private void fileSorter() throws IOException {
+		storageComponent.sort();
+		
 	}
 
 	private static void systemExiter() throws IOException {

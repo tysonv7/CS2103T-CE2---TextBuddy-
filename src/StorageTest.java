@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -48,9 +49,10 @@ public class StorageTest {
 		testStorage.delete(" 1");
 		assertEquals("deleted from testStorage.txt: \"Sherry\""+LINE_SEPARATOR,outContent.toString());
 	}
+	
 
 	@Test 
-	public void sortTest(){
+	public void sortTest() throws IOException{
 		testStorage.sort();
 		assertEquals("testStorage.txt is sorted"+LINE_SEPARATOR,outContent.toString());
 	}

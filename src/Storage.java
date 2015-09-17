@@ -123,8 +123,24 @@ public class Storage {
 		System.exit(0);
 	}
 
-	public void sort() {
-		Collections.sort(textBuffer);
+	public void sort() throws IOException {
+		System.out.println("Before sort");
+		textBufferChecker();
+		ArrayList<String> temp = new ArrayList<String>();
+		for (int i = 0; i < textBuffer.size(); i++){
+			temp.add(textBuffer.get(i).substring(3));
+		}
+		textBuffer = new ArrayList<String>();
+		Collections.sort(temp, String.CASE_INSENSITIVE_ORDER);
+		lineCounter = 1;
+		for (int i = 0; i < temp.size(); i++){
+			textBuffer.add(lineCounter+". "+temp.get(i));
+			lineCounter++;
+		}
+		fileInitialiser(filename);
+		writeBufferToFile();
+		System.out.println("After sort");
+		textBufferChecker();
 		Logic.getMessage(filename+DONE_SORT_COMMAND);
 	}
 	
