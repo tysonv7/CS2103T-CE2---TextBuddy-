@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,6 +29,8 @@ public class StorageTest {
 	public void initaliseStorage() throws IOException{
 		testStorage = new Storage("testStorage.txt");
 	}
+	
+	
 	@Test
 	public void clearTest() throws IOException{
 		testStorage.clear();
@@ -46,4 +49,8 @@ public class StorageTest {
 		assertEquals("deleted from testStorage.txt: \"Sherry\""+LINE_SEPARATOR,outContent.toString());
 	}
 
+	@Test 
+	public void sortTest(){
+		
+	}
 }

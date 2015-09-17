@@ -8,6 +8,7 @@ public class Logic {
 	private final static String COMMAND_DELETE = "delete";
 	private final static String COMMAND_CLEAR = "clear";
 	private final static String COMMAND_EXIT = "exit";
+	private final static String COMMAND_INVALID = "Invalid command! Please try again!";
 	private static Storage storageComponent;
 
 	public Logic(String filename) throws IOException {
@@ -25,6 +26,8 @@ public class Logic {
 			systemExiter();
 		}else if (input.equals(COMMAND_DELETE)){
 			fileDeleter(variables);
+		}else{
+			getMessage(COMMAND_INVALID);
 		}
 	}
 
