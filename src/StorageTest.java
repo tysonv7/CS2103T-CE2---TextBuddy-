@@ -30,9 +30,6 @@ public class StorageTest {
 	@Before
 	public void initaliseStorage() throws IOException{
 		testStorage = new Storage("testStorage.txt");
-		testStorage.add(" Sherry");
-		testStorage.add(" uses");
-		testStorage.add(" moe moe attack");
 	}
 	
 	
@@ -63,6 +60,6 @@ public class StorageTest {
 	
 	@Test
 	public void searchTest(){
-		testStorage.search("moe moe attack");
+		testStorage.search("Sherry");
 	}
 }
