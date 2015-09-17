@@ -139,5 +139,10 @@ public class Storage {
 		writeBufferToFile();
 		Logic.getMessage(filename+DONE_SORT_COMMAND);
 	}
+
+	public void search(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
