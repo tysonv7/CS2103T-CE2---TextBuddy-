@@ -6,12 +6,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Storage {
 	private final static String DONE_EMPTY_COMMAND = " is empty";
 	private final static String DONE_CLEAR_COMMAND = "all content deleted from ";
 	private final static String DONE_DELETE_COMMAND = "deleted from %1$s: \"%2$s\"";
 	private final static String DONE_ADD_COMMAND = "added to %1$s: \"%2$s\"";
+	private final static String DONE_SORT_COMMAND = " is sorted";
 	private static String filename;
 	static FileWriter newFile;
 	static PrintWriter fileWriter;
@@ -122,8 +124,8 @@ public class Storage {
 	}
 
 	public void sort() {
-		// TODO Auto-generated method stub
-		
+		Collections.sort(textBuffer);
+		Logic.getMessage(filename+DONE_SORT_COMMAND);
 	}
 	
 }
