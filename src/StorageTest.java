@@ -51,6 +51,6 @@ public class StorageTest {
 
 	@Test 
 	public void sortTest(){
-		
+		testStorage.sort();
 	}
 }
