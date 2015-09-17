@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class TextBuddyPlusPlus {
@@ -11,30 +10,29 @@ public class TextBuddyPlusPlus {
 	public static void main(String[] args) throws IOException {
 		Logic logicComponent = new Logic(args[0]);
 		printWelcomeMessage(args);
-		inputForwarding(logicComponent);
+		inputPassingToLogic(logicComponent);
 	}
-	
-	private static void inputForwarding(Logic logicComponent) throws IOException {
+	/**
+	 * Forwards to Logic inputs from user
+	 * @param logicComponent	The logicComponent object that is used to 
+	 * 							process commands
+	 * @throws IOException		Happens if storage operations are unable to
+	 * 							read/write to file
+	 */
+	private static void inputPassingToLogic(Logic logicComponent) throws IOException {
 		while(true){
-			String input = inputScanner.next();
-			String variables = null;
-			try{
-				variables = inputScanner.nextLine();
-			}catch(NoSuchElementException e){
-				
-			}
-			logicComponent.parseCommand(input,variables);
+			logicComponent.parseCommand(inputScanner.next(), inputScanner.nextLine());
 		}
 	}
 	
-	public static void arrayListPrinter(ArrayList<String> inputReturns) {
-		for (int i = 0; i < inputReturns.size();i++){
-			textPrinter(inputReturns.get(i));
+	public static void printArrayListToScreen(ArrayList<String> outputToScreen) {
+		for (int i = 0; i < outputToScreen.size();i++){
+			printTextToScreen(outputToScreen.get(i));
 		}
 	}
 	
-	public static void textPrinter(String output){
-		System.out.println(output);
+	public static void printTextToScreen(String outputToScreen){
+		System.out.println(outputToScreen);
 	}
 	private static void printWelcomeMessage(String[] args) {
 		System.out.println(String.format(MESSAGE_WELCOME, args[0]));

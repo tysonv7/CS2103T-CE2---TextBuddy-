@@ -32,13 +32,13 @@ public class TextBuddyPlusPlusTest {
 		test.add("This");
 		test.add("is");
 		test.add("stupid");
-		TextBuddyPlusPlus.arrayListPrinter(test);
+		TextBuddyPlusPlus.printArrayListToScreen(test);
 		assertEquals("This" + LINESEPARATOR + "is" + LINESEPARATOR + "stupid" + LINESEPARATOR, outContent.toString());
 	}
 
 	@Test
 	public void testTextPrinter() {
-		TextBuddyPlusPlus.textPrinter("hello");
+		TextBuddyPlusPlus.printTextToScreen("hello");
 		assertEquals("hello" + LINESEPARATOR, outContent.toString());
 	}
 

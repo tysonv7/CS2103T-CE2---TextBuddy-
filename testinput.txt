@@ -13,4 +13,15 @@ add Sherry
 add uses
 add moe moe attack
 display
+sort
+display
+clear
+add Sherry
+add have
+add moe moe attack
+add bubblebeam attack
+add flamethrower attack
+display
+search attack
+search attacks
 exit
