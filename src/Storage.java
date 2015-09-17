@@ -120,5 +120,10 @@ public class Storage {
 		fileCloser();
 		System.exit(0);
 	}
+
+	public void sort() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
