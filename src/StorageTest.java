@@ -52,5 +52,6 @@ public class StorageTest {
 	@Test 
 	public void sortTest(){
 		testStorage.sort();
+		assertEquals("testStorage.txt sorted"+LINE_SEPARATOR,outContent.toString());
 	}
 }
