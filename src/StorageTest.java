@@ -61,5 +61,6 @@ public class StorageTest {
 	@Test
 	public void searchTest(){
 		testStorage.search("Sherry");
+		assertEquals("1. Sherry"+LINE_SEPARATOR,outContent.toString());
 	}
 }

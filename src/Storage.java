@@ -141,8 +141,15 @@ public class Storage {
 	}
 
 	public void search(String string) {
-		// TODO Auto-generated method stub
-		
+		int searchResultsListing = 1;
+		ArrayList<String> searchResults = new ArrayList<String>();
+		for (int i = 0; i < textBuffer.size(); i++){
+			if(textBuffer.get(i).contains(string)){
+				searchResults.add(searchResultsListing+". "+textBuffer.get(i).substring(3));
+				searchResultsListing++;
+			}
+		}
+		Logic.getDisplayData(searchResults);
 	}
 	
 }
