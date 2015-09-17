@@ -124,8 +124,6 @@ public class Storage {
 	}
 
 	public void sort() throws IOException {
-		System.out.println("Before sort");
-		textBufferChecker();
 		ArrayList<String> temp = new ArrayList<String>();
 		for (int i = 0; i < textBuffer.size(); i++){
 			temp.add(textBuffer.get(i).substring(3));
@@ -139,8 +137,6 @@ public class Storage {
 		}
 		fileInitialiser(filename);
 		writeBufferToFile();
-		System.out.println("After sort");
-		textBufferChecker();
 		Logic.getMessage(filename+DONE_SORT_COMMAND);
 	}
 	

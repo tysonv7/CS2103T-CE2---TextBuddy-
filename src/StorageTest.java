@@ -23,8 +23,9 @@ public class StorageTest {
 	}
 	
 	@After
-	public void cleanUpStreams(){
+	public void cleanUpStreams() throws IOException{
 		System.setOut(System.out);
+		testStorage.clear();
 	}
 	@Before
 	public void initaliseStorage() throws IOException{
@@ -55,5 +56,10 @@ public class StorageTest {
 	public void sortTest() throws IOException{
 		testStorage.sort();
 		assertEquals("testStorage.txt is sorted"+LINE_SEPARATOR,outContent.toString());
+	}
+	
+	@Test
+	public void searchTest(){
+		
 	}
 }
