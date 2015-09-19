@@ -22,11 +22,6 @@ public class TextBuddyPlusPlusTest {
 	}
 
 	@Test
-	public void testMain() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testArrayPrinter() {
 		ArrayList<String> test = new ArrayList<String>();
 		test.add("This");

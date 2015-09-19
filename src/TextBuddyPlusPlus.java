@@ -1,3 +1,7 @@
+/**
+ * This class serves as a textUI as well as storing the main function
+ * @author Khairul Rizqi Bin Mohd Shariff
+ */
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,7 +14,7 @@ public class TextBuddyPlusPlus {
 	public static void main(String[] args) throws IOException {
 		Logic logicComponent = new Logic(args[0]);
 		printWelcomeMessage(args);
-		inputPassingToLogic(logicComponent);
+		executeUserInputs(logicComponent);
 	}
 	/**
 	 * Forwards to Logic inputs from user
@@ -19,14 +23,14 @@ public class TextBuddyPlusPlus {
 	 * @throws IOException		Happens if storage operations are unable to
 	 * 							read/write to file
 	 */
-	private static void inputPassingToLogic(Logic logicComponent) throws IOException {
-		while(true){
+	private static void executeUserInputs(Logic logicComponent) throws IOException {
+		while(true) {
 			logicComponent.parseCommand(inputScanner.next(), inputScanner.nextLine());
 		}
 	}
 	
 	public static void printArrayListToScreen(ArrayList<String> outputToScreen) {
-		for (int i = 0; i < outputToScreen.size();i++){
+		for (int i = 0; i < outputToScreen.size();i++) {
 			printTextToScreen(outputToScreen.get(i));
 		}
 	}

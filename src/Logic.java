@@ -1,3 +1,7 @@
+/**
+ * This class serves as a parser and a logic component of TextBuddy++
+ * @author Khairul Rizqi Bin Mohd Shariff
+ */
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,27 +35,27 @@ public class Logic {
 	public void parseCommand(String command,String variables) throws IOException {
 		if (command.equals(COMMAND_ADD)){
 			addToTextFile(variables);
-		}else if (command.equals(COMMAND_CLEAR)){
+		} else if (command.equals(COMMAND_CLEAR)) {
 			clearTextFile();
-		}else if (command.equals(COMMAND_DISPLAY)){
+		} else if (command.equals(COMMAND_DISPLAY)) {
 			displayTextFile();
-		}else if (command.equals(COMMAND_EXIT)){
+		} else if (command.equals(COMMAND_EXIT)) {
 			exitSystem();
-		}else if (command.equals(COMMAND_DELETE)){
+		} else if (command.equals(COMMAND_DELETE)) {
 			deleteTextEntryFromFile(variables);
-		}else if (command.equals(COMMAND_SORT)){
+		} else if (command.equals(COMMAND_SORT)) {
 			sortTextFile();
-		}else if (command.equals(COMMAND_SEARCH)){
+		} else if (command.equals(COMMAND_SEARCH)) {
 			searchTextFile(variables);
-		}else{
+		} else {
 			getTextMessage(COMMAND_INVALID);
 		}
 	}
 
 	private void searchTextFile(String variables) {
-		if(variables.equals(BLANK_STRING)){
+		if (isVariableEmpty(variables)) {
 			getTextMessage(COMMAND_INVALID);
-		}else{
+		} else {
 			storageComponent.search(variables);
 		}
 	}
@@ -65,9 +69,9 @@ public class Logic {
 	}
 
 	private void deleteTextEntryFromFile(String variables) throws IOException {
-		if(variables.equals(BLANK_STRING)){
+		if (isVariableEmpty(variables)) {
 			getTextMessage(COMMAND_INVALID);
-		}else{
+		} else {
 			storageComponent.delete(variables);
 		}
 	}
@@ -81,18 +85,22 @@ public class Logic {
 	}
 
 	private void addToTextFile(String variables) throws IOException {
-		if(variables.equals(BLANK_STRING)){
+		if (isVariableEmpty(variables)) {
 			getTextMessage(COMMAND_INVALID);
-		}else{
+		} else {
 			storageComponent.add(variables);
 		}
 	}
+
+	private boolean isVariableEmpty(String variables) {
+		return variables.equals(BLANK_STRING);
+	}
 	
-	public static void getTextMessage(String message){
+	public static void getTextMessage(String message) {
 		TextBuddyPlusPlus.printTextToScreen(message);
 	}
 	
-	public static void getTextMessages(ArrayList<String> message){
+	public static void getTextMessages(ArrayList<String> message) {
 		TextBuddyPlusPlus.printArrayListToScreen(message);
 	}
 

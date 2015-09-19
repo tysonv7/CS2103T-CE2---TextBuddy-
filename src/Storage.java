@@ -1,3 +1,7 @@
+/**
+ * This class handles all the memory storage and file writing operations
+ * @author Khairul Rizqi Bin Mohd Shariff
+ */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -40,6 +44,7 @@ public class Storage {
 	private void readTextFile(String file) throws IOException {
 		initaliseFileReader();
 		String line;
+		
 		while ((line = textReader.readLine()) != null) {
 			textBuffer.add(line);
 			lineCounter++;
@@ -67,10 +72,12 @@ public class Storage {
 	public void add(String textInput) throws IOException {
 		String messageToBePrinted = lineCounter + "." + textInput;
 		textBuffer.add(messageToBePrinted);
+		
 		/**to add the numbering in front of the text */ 
 		fileWriter.println(messageToBePrinted);
 		fileWriter.flush();
 		lineCounter++;
+		
 		/**to remove the empty space before the textInput */
 		Logic.getTextMessage(String.format(DONE_ADD_COMMAND, filename,textInput.substring(1))); 
 	}
@@ -93,9 +100,9 @@ public class Storage {
 	 * @throws FileNotFoundException if unable to find the file
 	 */
 	public void display() throws FileNotFoundException {
-		if (textBuffer.size() == 0){
+		if (textBuffer.size() == 0) {
 			Logic.getTextMessage(filename + DONE_EMPTY_COMMAND);
-		}else{
+		} else {
 			Logic.getTextMessages(textBuffer);
 		}
 	}
@@ -113,16 +120,17 @@ public class Storage {
 	 */
 	public void delete(String variables) throws IOException {
 		int lineNumberToBeRemoved = Integer.parseInt(variables.substring(1))-1;
-		if (lineNumberToBeRemoved < 0){
+		if (lineNumberToBeRemoved < 0) {
 			Logic.getTextMessage(INVALID_INDEX);
-		}else{
+		} else {
 			lineCounter = 1;
 			String messageToBeDeleted = textBuffer.get(lineNumberToBeRemoved).substring(3);
 			textBuffer.remove(lineNumberToBeRemoved);
 			@SuppressWarnings("unchecked")
 			ArrayList<String> temp = (ArrayList<String>) textBuffer.clone();
 			textBuffer = new ArrayList<String>();
-			for(int i = 0; i < temp.size(); i++){
+			
+			for (int i = 0; i < temp.size(); i++) {
 				textBuffer.add(lineCounter+temp.get(i).substring(1));
 				lineCounter++;
 			}
@@ -137,7 +145,7 @@ public class Storage {
 	 */
 	@SuppressWarnings("unused")
 	private void checkTextBuffer() {
-		for (int i = 0; i < textBuffer.size(); i++){
+		for (int i = 0; i < textBuffer.size(); i++) {
 			System.out.println(textBuffer.get(i));
 		}
 	}
@@ -149,7 +157,8 @@ public class Storage {
 	 */
 	private static void writeTextBufferToFile() throws FileNotFoundException {
 		fileWriter = new PrintWriter(filename);
-		for (int i = 0; i < textBuffer.size(); i++){
+		
+		for (int i = 0; i < textBuffer.size(); i++) {
 			fileWriter.println(textBuffer.get(i));
 			fileWriter.flush();
 		}
@@ -188,16 +197,20 @@ public class Storage {
 	 */
 	public void sort() throws IOException {
 		ArrayList<String> temp = new ArrayList<String>();
-		for (int i = 0; i < textBuffer.size(); i++){
+		
+		for (int i = 0; i < textBuffer.size(); i++) {
 			temp.add(textBuffer.get(i).substring(3));
 		}
+		
 		textBuffer = new ArrayList<String>();
 		Collections.sort(temp, String.CASE_INSENSITIVE_ORDER);
 		lineCounter = 1;
-		for (int i = 0; i < temp.size(); i++){
+		
+		for (int i = 0; i < temp.size(); i++) {
 			textBuffer.add(lineCounter+". "+temp.get(i));
 			lineCounter++;
 		}
+		
 		initaliseFile(filename);
 		writeTextBufferToFile();
 		Logic.getTextMessage(filename+DONE_SORT_COMMAND);
@@ -211,16 +224,17 @@ public class Storage {
 		int searchResultsListing = 1;
 		boolean isFound = false;
 		ArrayList<String> searchResults = new ArrayList<String>();
-		for (int i = 0; i < textBuffer.size(); i++){
-			if(textBuffer.get(i).toLowerCase().contains(keyword.toLowerCase())){
+		
+		for (int i = 0; i < textBuffer.size(); i++) {
+			if (textBuffer.get(i).toLowerCase().contains(keyword.toLowerCase())) {
 				searchResults.add(searchResultsListing+". "+textBuffer.get(i).substring(3));
 				searchResultsListing++;
 				isFound = true;
 			}
 		}
-		if(isFound){
+		if (isFound) {
 			Logic.getTextMessages(searchResults);
-		}else{
+		} else {
 			/**to remove the empty space in keyword */
 			Logic.getTextMessage(String.format(KEYWORD_NOT_FOUND,keyword.substring(1)));
 		}
